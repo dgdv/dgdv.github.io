@@ -61,7 +61,7 @@
             fetch(ct)
               .then(res => res.text())
               .then(d => {
-                const lines = d.split('\n');
+                const lines = d.split('\n\n');
                 const wrappedLines = lines.map(line => line.slice(0, 80).padEnd(80));
                 ctDiv.textContent = wrappedLines.join('\n');
                 
