@@ -25,7 +25,8 @@
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
       cursor: pointer;
     }
-        .ct {
+
+    .ct {
       font-size: 1rem;
       overflow-y: visible;
       max-height: 80vh;
@@ -38,6 +39,7 @@
 <body>
   <div class="wc">
     <h1 class="rw"></h1>
+    <p class="ct"></p>
   </div>
   <script>
     const wl = 'wl.txt';
@@ -60,6 +62,9 @@
                 const lines = d.split('\n');
                 const wrappedLines = lines.map(line => line.slice(0, 80).padEnd(80));
                 ctDiv.textContent = wrappedLines.join('\n');
+              })
+              .catch(err => {
+                ctDiv.textContent = 'Error fetching content: ' + err;
               });
           } else {
             const ri = Math.floor(Math.random() * wl.length);
@@ -69,6 +74,7 @@
             rw.style.color = rc;
           }
         };
+
         rww();
         setInterval(rww, 4000);
       })
