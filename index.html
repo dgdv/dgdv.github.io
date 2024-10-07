@@ -29,6 +29,8 @@
       font-size: 1rem;
       overflow-y: scroll;
       max-height: 80vh;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
   </style>
 </head>
@@ -47,15 +49,16 @@
 
         const wc = document.querySelector('.wc');
         const rw = document.querySelector('.rw');
+        const ctDiv = document.querySelector('.ct');
 
         const rww = () => {
           if (Math.random() < 0.05) {
             fetch(ct)
               .then(res => res.text())
               .then(d => {
-                const paragraphs = d.split('\n\n');
-                const randomParagraphIndex = Math.floor(Math.random() * paragraphs.length);
-                ctDiv.textContent = paragraphs[randomParagraphIndex];
+                const lines = d.split('\n');
+                const wrappedLines = lines.map(line => line.slice(0, 80).padEnd(80));
+                ctDiv.textContent = wrappedLines.join('\n');
               });
           } else {
             const ri = Math.floor(Math.random() * wl.length);
