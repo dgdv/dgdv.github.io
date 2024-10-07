@@ -23,6 +23,7 @@
       font-size: 4rem;
       color: #808080;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      cursor: pointer;
     }
         .ct {
       font-size: 1rem;
@@ -52,7 +53,9 @@
             fetch(ct)
               .then(res => res.text())
               .then(d => {
-                rw.textContent = d;
+                const paragraphs = d.split('\n\n');
+                const randomParagraphIndex = Math.floor(Math.random() * paragraphs.length);
+                ctDiv.textContent = paragraphs[randomParagraphIndex];
               });
           } else {
             const ri = Math.floor(Math.random() * wl.length);
