@@ -30,6 +30,8 @@
       font-size: 1rem;
       overflow-y: visible;
       max-height: 80vh;
+      white-space: pre-wrap;
+      word-wrap: break-word;
       color: white;
     }
   </style>
@@ -51,6 +53,8 @@
         const wc = document.querySelector('.wc');
         const rw = document.querySelector('.rw');
         const ctDiv = document.querySelector('.ct');
+        
+        let currentInterval = 4000; // Initial interval for word list
 
         const rww = () => {
           if (Math.random() < 0.05) {
@@ -60,6 +64,9 @@
                 const lines = d.split('\n');
                 const wrappedLines = lines.map(line => line.slice(0, 80).padEnd(80));
                 ctDiv.textContent = wrappedLines.join('\n');
+                
+                
+                currentInterval = 60000;
               })
               .catch(err => {
                 ctDiv.textContent = 'Error fetching content: ' + err;
@@ -74,7 +81,7 @@
         };
 
         rww();
-        setInterval(rww, 4000);
+        setInterval(rww, currentInterval);
       })
       .catch(err => {
         rw.textContent = 'Error fetching word list: ' + err;
