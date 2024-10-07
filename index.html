@@ -65,7 +65,7 @@
             const ri = Math.floor(Math.random() * wl.length);
             rw.textContent = wl[ri];
 
-            const rc = `#${Math.floor(Math.random() * 2 + 2).toString(16)}${Math.floor(Math.random() * 2 + 2).toString(16)}${Math.floor(Math.random() * 2 + 2).toString(16)}${Math.floor(Math.random() * 2 + 2).toString(16)}`;
+            const rc = Math.random() < 0.5 ? '#808080' : '#C0C0C0';
             rw.style.color = rc;
           }
         };
