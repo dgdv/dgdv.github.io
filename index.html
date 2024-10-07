@@ -69,8 +69,8 @@
             rw.style.color = rc;
           }
         };
-
-        wc.addEventListener('click', rww());
+        rww();
+        setInterval(rww, 4000);
       })
       .catch(err => {
         rw.textContent = 'Error fetching word list: ' + err;
