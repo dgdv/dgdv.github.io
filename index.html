@@ -58,14 +58,12 @@
 
         const rww = () => {
           if (Math.random() < 0.05) {
-             fetch(ct)
-              .then(res => res.text())
-              .then(d => {
-                const lines = d.split('\n');
-                const wrappedLines = lines.map(line => line.slice(0, 80).padEnd(80));
-                rw.textContent = wrappedLines.join('\n'); // Display content in the heading
-                ctDiv.textContent = ''; // Clear the paragraph
-                currentInterval = 60000;
+  fetch(ct)
+    .then(res => res.text())
+    .then(d => {
+      rw.textContent = d.trim(); // Display entire content in the heading
+      ctDiv.textContent = ''; // Clear the paragraph
+      currentInterval = 60000;
               })
               .catch(err => {
                 ctDiv.textContent = 'Error fetching content: ' + err;
